@@ -1,0 +1,46 @@
+{
+    "name": "atakde/psession",
+    "description": "PHP library for php sessions",
+    "keywords": [
+        "php-session",
+        "php-session-handler",
+        "php",
+        "session",
+        "session-handler",
+        "session-manager",
+        "session-storage",
+        "session-storage-handler",
+        "session-storage-manager",
+        "php-session-storage",
+        "php-session-storage-handler",
+        "php-session-storage-manager",
+        "php-session-manager"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Atakde\\PSession\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Atakan Demircioğlu",
+            "homepage": "https://atakann.com/"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.9",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atakde\\PSession\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    }
+}
