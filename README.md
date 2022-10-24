@@ -10,7 +10,7 @@ Install via composer
 composer require atakde/psession
 ```
 
-## Usage (Text Message)
+## Usage
 
 ```php
 
