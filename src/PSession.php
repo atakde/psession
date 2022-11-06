@@ -192,7 +192,20 @@ class PSession
      */
     public function get(string $key, $defaultValue = null)
     {
-        return $_SESSION[$key] ?? $defaultValue;
+        $keys = explode('.', $key);
+        $session = $_SESSION;
+        foreach ($keys as $key) {
+            // allow both object and array access
+            if (is_array($session) && isset($session[$key])) {
+                $session = $session[$key];
+            } elseif (is_object($session) && isset($session->$key)) {
+                $session = $session->$key;
+            } else {
+                return $defaultValue;
+            }
+        }
+
+        return $session ?? $defaultValue;
     }
 
     /**
@@ -201,7 +214,24 @@ class PSession
      */
     public function set(string $key, $value = null): void
     {
-        $_SESSION[$key] = $value;
+        // both object and array access
+        $keys = explode('.', $key);
+        $session = &$_SESSION;
+        foreach ($keys as $key) {
+            if (is_array($session) && !isset($session[$key])) {
+                $session[$key] = [];
+            } elseif (is_object($session) && !isset($session->$key)) {
+                $session->$key = [];
+            }
+            
+            if (is_array($session)) {
+                $session = &$session[$key];
+            } elseif (is_object($session)) {
+                $session = &$session->$key;
+            }
+        }
+
+        $session = $value;
     }
 
     /**
