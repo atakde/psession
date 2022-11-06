@@ -32,3 +32,13 @@ echo $session->get('name');
 $session->destroy();
 
 ```
+
+## Features
+
+* Allowed dot notation both get & set
+
+```php
+Session::get('user.name');
+Session::set('user.name', 'Testing');
+```
+
