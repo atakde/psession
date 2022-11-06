@@ -60,6 +60,7 @@ class PSession
                 throw new InvalidOption($key);
             }
         }
+        $this->options = $options;
     }
 
     /**
