@@ -223,7 +223,7 @@ class PSession
             } elseif (is_object($session) && !isset($session->$key)) {
                 $session->$key = [];
             }
-            
+
             if (is_array($session)) {
                 $session = &$session[$key];
             } elseif (is_object($session)) {
